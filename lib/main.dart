@@ -2,6 +2,7 @@ import 'package:client/Screeen/home_screen.dart';
 import 'package:client/provider/dark_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'Screeen/btm_bar.dart';
+import 'Screeen/wishlist/wishlist_screen.dart';
 import 'consts/theme_data.dart';
 import 'package:provider/provider.dart';
 
@@ -53,6 +54,7 @@ class _MyAppState extends State<MyApp> {
                   OnSaleScreen.routeName: (ctx) => const OnSaleScreen(),
                   FeedsScreen.routeName: (ctx) => const FeedsScreen(),
                   ProductDetails.routeName: (ctx) => const ProductDetails(),
+                  WishlistScreen.routeName: (ctx) => const WishlistScreen(),
             },
             );
           }),

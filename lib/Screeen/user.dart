@@ -1,9 +1,11 @@
+import 'package:client/Screeen/wishlist/wishlist_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
 import '../Widgets/text_widget.dart';
 import '../provider/dark_theme_provider.dart';
+import '../services/global_methods.dart';
 
 class UserScreen extends StatefulWidget {
   const UserScreen({Key? key}) : super(key: key);
@@ -90,7 +92,10 @@ class _UserScreenState extends State<UserScreen> {
                 _listTiles(
                   title: 'Wishlist',
                   icon: IconlyLight.heart,
-                  onPressed: () {},
+                  onPressed: () {
+                    GlobalMethods.navigateTo(ctx: context, routeName: WishlistScreen.routeName);
+
+                  },
                   color: color,
                 ),
                 _listTiles(
@@ -128,7 +133,14 @@ class _UserScreenState extends State<UserScreen> {
                   title: 'Logout',
                   icon: IconlyLight.logout,
                   onPressed: () {
-                    _showLogoutDialog();
+                    GlobalMethods.WarningDialog(
+                        title: "Sign out",
+                        subtitle: "Do you wanna sign out?",
+                        fct: (){
+
+                        },
+                        context: context
+                    );
                   },
                   color: color,
                 ),
@@ -140,54 +152,6 @@ class _UserScreenState extends State<UserScreen> {
       ),
     );
   }
-
-  Future<void> _showLogoutDialog() async {
-    await showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Row(
-            children: [
-              Image.asset(
-                'assets/images/warning-sign.png',
-                height: 20,
-                width: 20,
-                fit: BoxFit.fill,
-              ),
-              const SizedBox(
-                  width: 8
-              ),
-              const Text('Sign out'),
-            ],
-          ),
-          content: const Text('Do you want to sign out?'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                if (Navigator.canPop(context)) {
-                  Navigator.pop(context);
-                }
-              },
-              child: TextWidget(
-                text: 'Cancel',
-                color: Colors.cyan,
-                textSize: 18,
-              ),
-            ),
-            TextButton(
-              onPressed: () {},
-              child: TextWidget(
-                  text: 'OK',
-                  color: Colors.red,
-                  textSize: 18
-              ),
-            ),
-          ],
-        );
-      }
-    );
-  }
-
   Future<void> _showAddressDialog() async {
     await showDialog(
       context: context,
