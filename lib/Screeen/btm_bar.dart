@@ -7,7 +7,7 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/dark_theme_provider.dart';
-import 'cart.dart';
+import 'cart/cart_screen.dart';
 import 'home_screen.dart';
 
 class BottomBarScreen extends StatefulWidget {
@@ -18,7 +18,7 @@ class BottomBarScreen extends StatefulWidget {
 }
 
 class _BottomBarScreenState extends State<BottomBarScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 2;
   final List<Map<String, dynamic>> _pages = [
     {
       'page': const HomeScreen(),

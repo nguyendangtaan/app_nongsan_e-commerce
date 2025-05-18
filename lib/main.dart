@@ -5,6 +5,10 @@ import 'Screeen/btm_bar.dart';
 import 'consts/theme_data.dart';
 import 'package:provider/provider.dart';
 
+import 'inner_screens/feeds_screen.dart';
+import 'inner_screens/on_sale_screen.dart';
+import 'inner_screens/product_details.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -44,10 +48,16 @@ class _MyAppState extends State<MyApp> {
                 debugShowCheckedModeBanner: false,
                 title: 'Flutter',
                 theme: Styles.themeData(themeProvider.getDarkTheme, context),
-                home: const BottomBarScreen()
+                home: const BottomBarScreen(),
+                routes: {
+                  OnSaleScreen.routeName: (ctx) => const OnSaleScreen(),
+                  FeedsScreen.routeName: (ctx) => const FeedsScreen(),
+                  ProductDetails.routeName: (ctx) => const ProductDetails(),
+            },
             );
           }),
     );
+
   }
 }
 
