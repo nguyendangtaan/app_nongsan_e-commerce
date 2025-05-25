@@ -5,7 +5,8 @@ import 'package:client/Screeen/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
-
+import 'package:badges/badges.dart' as badges;
+import '../Widgets/text_widget.dart';
 import '../provider/dark_theme_provider.dart';
 import 'cart/cart_screen.dart';
 import 'home_screen.dart';
@@ -65,8 +66,26 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
         BottomNavigationBarItem(icon: Icon(_selectedIndex == 1 ? IconlyBold.category :  IconlyLight.category),
           label: "Categories",
         ),
-        BottomNavigationBarItem(icon: Icon(_selectedIndex == 2 ? IconlyBold.buy :  IconlyLight.buy),
-          label: "Cart",
+        BottomNavigationBarItem(
+          label: 'Cart',
+          icon: badges.Badge(
+            badgeAnimation: const badges.BadgeAnimation.slide(),
+            badgeStyle: badges.BadgeStyle(
+              shape: badges.BadgeShape.circle,
+              badgeColor: Colors.blue,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            position: badges.BadgePosition.topEnd(top: -7, end: -7),
+            badgeContent: FittedBox(
+                child: TextWidget(
+                    text: "1",
+                    color: Colors.white,
+                    textSize: 15)),
+            child: Icon(
+                _selectedIndex == 2 ? IconlyBold.buy : IconlyLight.buy
+            ),
+          )
+
         ),
         BottomNavigationBarItem(icon: Icon(_selectedIndex == 3 ? IconlyBold.user2 :  IconlyLight.user2),
           label: "User",

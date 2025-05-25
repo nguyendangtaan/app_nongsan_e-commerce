@@ -1,4 +1,5 @@
 import 'package:card_swiper/card_swiper.dart';
+import 'package:client/consts/consts.dart';
 import 'package:client/services/global_methods.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ import '../inner_screens/on_sale_screen.dart';
 import '../provider/dark_theme_provider.dart';
 import '../services/utils.dart';
 
+
 class HomeScreen extends StatefulWidget{
   const HomeScreen ({Key? key}): super(key: key);
 
@@ -21,12 +23,7 @@ class HomeScreen extends StatefulWidget{
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<String>_offerImage = [
-    'assets/images/offres/Offer1.jpg',
-    'assets/images/offres/Offer2.jpg',
-    'assets/images/offres/Offer3.jpg',
-    'assets/images/offres/Offer4.jpg',
-  ];
+
   @override
   Widget build(BuildContext context) {
     final Utils utils = Utils(context);
@@ -42,11 +39,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: size.height*0.33,
                   child:Swiper(
                     itemBuilder: (BuildContext, int index){
-                      return Image.asset(_offerImage[index],fit: BoxFit.fill,);
+                      return Image.asset(
+                        Constss.offerImage[index],
+                        fit: BoxFit.fill,);
 
                     },
                     autoplay: true,
-                    itemCount: _offerImage.length,
+                    itemCount: Constss.offerImage.length,
                     pagination: const SwiperPagination(
                       alignment: Alignment.bottomCenter,
                           builder: DotSwiperPaginationBuilder(
